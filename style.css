@@ -6,11 +6,11 @@ body {
   background: black;
   color: #f9f9f9;
   font-family: "Euclid Circular B", "Poppins";
-  /* background-image: url(/The-Curse-of-Pharaoh-Tutankhamun-1140x530.jpg);
+  background-image: url(/mylivewallpapers.com-Hieroglyphics-ezgif.com-video-to-gif-converter.gif);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed; */
+  background-attachment: fixed;
 
 }
 
@@ -24,11 +24,53 @@ body {
 * {
   box-sizing: border-box;
 }
+/*creating sand animation */
+.sand-moving {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
 
+.sand-moving span {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: rgba(255, 215, 0, 0.5);
+    border-radius: 50%;
+    box-shadow: 0 0 4px rgba(255, 200, 0, 0.9);
+    animation: sandFly linear infinite;
+}
+
+/* توليد نقاط الرمال */
+.sand-moving span:nth-child(n) {
+    top: calc(100% * var(--y));
+    left: calc(100% * var(--x));
+    animation-duration: calc(5s + (5s * var(--speed)));
+    animation-delay: calc(-5s * var(--delay));
+}
+
+/* حركة الرمال */
+@keyframes sandFly {
+    0% {
+        transform: translateY(0) translateX(0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-150vh) translateX(50vw) scale(0.5);
+        opacity: 0;
+    }
+}
+
+/* styling the card */
 .card {
   display: flex;
   flex-direction: column;
-  background: var(--color-card);
+  background: black;
   border-radius: 22px;
   padding: 6px;
   width: clamp(300px, 85vw, 500px);
@@ -91,19 +133,26 @@ button,
 input {
   height: 44px;
   border-radius: 6px;
-  border: 0;
+  border: 1px solid transparent;
   background: transparent;
   color: inherit;
   font-family: inherit;
   font-size: 16px;
   width: 100%;
-  outline-color: var(--color-primary);
+  outline: none; /* إلغاء الخط الأبيض */
 }
 
 input {
-  background: #3c364c;
+  background: #3c364c57;
   padding: 0 2.5vw;
+  transition: 0.2s ease;
 }
+
+input:focus {
+  border: 1px solid gold; /* حدود ذهبية */
+  box-shadow: 0 0 6px gold; /* جلو جميل */
+}
+
 
 input::placeholder {
   color: #7f7990;
@@ -120,7 +169,7 @@ input::placeholder {
   justify-content: center;
   gap: 10px;
   background: transparent;
-  border: 1px solid var(--color-border);
+  border: 1px solid rgba(243, 207, 0, 0.26);
   font-size: 15px;
 }
 
@@ -134,7 +183,7 @@ input::placeholder {
 
 form > button[type="submit"] {
   color: #ffffff;
-  background: var(--color-primary);
+  background: rgba(72, 255, 0, 0.164);
   font-size: 17px;
 }
 
@@ -170,6 +219,8 @@ form > button[type="submit"] {
   padding: 0 12px;
 }
 
+
+/* responsive styles */
 @media (width >= 485px) {
   form {
     padding-inline: 50px;

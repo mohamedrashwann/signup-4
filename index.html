@@ -25,12 +25,14 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
+    <div class="sand-moving"></div>
+
     <div class="card">
       <div class="hero">
         <div class="hero-inner"></div>
       </div>
       <form>
-        <h2>Create an account</h2>
+        <h2>Welcome to my cemetery</h2>
         <h3>Use your email and password</h3>
         <input type="email" placeholder="Email" />
         <input type="password" placeholder="Password" />
@@ -48,5 +50,17 @@
         </div>
       </form>
     </div>
+    <script>
+const sandContainer = document.querySelector('.sand-moving');
+
+for (let i = 0; i < 200; i++) {
+  const sand = document.createElement('span');
+  sand.style.setProperty('--x', Math.random());
+  sand.style.setProperty('--y', Math.random());
+  sand.style.setProperty('--speed', Math.random());
+  sand.style.setProperty('--delay', Math.random());
+  sandContainer.appendChild(sand);
+}
+</script>
   </body>
 </html>
