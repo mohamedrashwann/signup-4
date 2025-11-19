@@ -1,4 +1,4 @@
-  body {
+body {
     height: 100vh;
     margin: 0;
     display: grid;
@@ -6,93 +6,156 @@
     background: black;
     color: #f9f9f9;
     font-family: "Euclid Circular B", "Poppins";
-    background-image: url(/mylivewallpapers.com-Hieroglyphics-ezgif.com-video-to-gif-converter.gif);
+    /* background-image: url(/mylivewallpapers.com-Hieroglyphics-ezgif.com-video-to-gif-converter.gif); */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
+}
 
-  }
-
-  :root {
+:root {
     --color-primary: #8864f0;
     --color-border: #686870;
     --color-muted: #67666e;
     --color-card: #292334;
-  }
+}
 
-  * {
+* {
     box-sizing: border-box;
-  }
-  /*creating sand animation */
-  .sand-moving {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      overflow: hidden;
-      pointer-events: none;
-      z-index: 0;
-  }
+}
 
-  .sand-moving span {
-      position: absolute;
-      width: 3px;
-      height: 3px;
-      background: rgba(255, 215, 0, 0.5);
-      border-radius: 50%;
-      box-shadow: 0 0 4px rgba(255, 200, 0, 0.9);
-      animation: sandFly linear infinite;
-  }
+/*creating sand animation */
+.sand-moving {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
 
-  /* توليد نقاط الرمال */
-  .sand-moving span:nth-child(n) {
-      top: calc(100% * var(--y));
-      left: calc(100% * var(--x));
-      animation-duration: calc(5s + (5s * var(--speed)));
-      animation-delay: calc(-5s * var(--delay));
-  }
+.sand-moving span {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: rgba(255, 215, 0, 0.5);
+    border-radius: 50%;
+    box-shadow: 0 0 4px rgba(255, 200, 0, 0.9);
+    animation: sandFly linear infinite;
+}
 
-  /* حركة الرمال */
-  @keyframes sandFly {
-      0% {
-          transform: translateY(0) translateX(0) scale(1);
-          opacity: 1;
-      }
-      100% {
-          transform: translateY(-150vh) translateX(50vw) scale(0.5);
-          opacity: 0;
-      }
-  }
+/* توليد نقاط الرمال */
+.sand-moving span:nth-child(n) {
+    top: calc(100% * var(--y));
+    left: calc(100% * var(--x));
+    animation-duration: calc(5s + (5s * var(--speed)));
+    animation-delay: calc(-5s * var(--delay));
+}
 
-  /* styling the card */
-  .card {
+/* حركة الرمال */
+@keyframes sandFly {
+    0% {
+        transform: translateY(0) translateX(0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-150vh) translateX(50vw) scale(0.5);
+        opacity: 0;
+    }
+}
+
+/* تأثير البوردر المتحرك على الكارد */
+.card {
+    position: relative;
     display: flex;
     flex-direction: column;
     background: black;
     border-radius: 22px;
-      border: 1px solid rgb(255, 217, 0); /* حدود ذهبية */
-
     padding: 6px;
     width: clamp(300px, 85vw, 500px);
     box-shadow: 0 50px 100px rgb(0 0 0 / 12%);
     opacity: 0.95;
-  }
+    overflow: hidden;
+}
 
-  .hero,
-  form {
+/* الطبقة الأولى للبوردر المتحرك */
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 22px;
+    padding: 2px;
+    background: linear-gradient(45deg, 
+        transparent, 
+        transparent 40%, 
+        gold, 
+        transparent 60%, 
+        transparent);
+    background-size: 400% 400%;
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    animation: borderAnimation 6s linear infinite;
+}
+
+/* الطبقة الثانية للبوردر المتحرك */
+.card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 22px;
+    padding: 2px;
+    background: linear-gradient(45deg, 
+        transparent, 
+        transparent 40%, 
+        gold, 
+        transparent 60%, 
+        transparent);
+    background-size: 400% 400%;
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    animation: borderAnimation 6s linear infinite reverse;
+    animation-delay: 3s;
+}
+
+/* حركة البوردر */
+@keyframes borderAnimation {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 400% 400%;
+    }
+}
+
+.hero,
+form {
     flex: 1 1 50%;
-  }
+}
 
-  h2,
-  h3,
-  p {
+h2,
+h3,
+p {
     font-weight: 500;
     margin: 0;
-  }
+}
 
-  .hero {
+.hero {
     background: url("/Egyptian\ God\ Apep.jpg");
     background-size: cover;
     background-repeat: no-repeat;
@@ -100,39 +163,39 @@
     border-radius: 16px;
     overflow: hidden;
     transition: 0.3s;
-  }
+}
 
-  .hero-inner {
+.hero-inner {
     background: linear-gradient(rgb(95 69 168 / 0%), rgba(95, 69, 168, 0.226));
     padding: 40px 66px;
     height: 100%;
     min-height: 170px;
-  }
+}
 
-  form {
+form {
     padding: 30px 18px;
     display: flex;
     flex-direction: column;
     gap: 12px;
     transition: padding 0.3s;
-  }
+}
 
-  form :is(h2, h3) {
+form :is(h2, h3) {
     text-align: center;
-  }
+}
 
-  form > h2 {
+form > h2 {
     font-size: 22px;
-  }
+}
 
-  form > h3 {
+form > h3 {
     font-size: 14px;
     margin-bottom: 12px;
     color: var(--color-muted);
-  }
+}
 
-  button,
-  input {
+button,
+input {
     height: 44px;
     border-radius: 6px;
     border: 1px solid transparent;
@@ -142,30 +205,29 @@
     font-size: 16px;
     width: 100%;
     outline: none; /* إلغاء الخط الأبيض */
-  }
+}
 
-  input {
+input {
     background: #3c364c57;
     padding: 0 2.5vw;
     transition: 0.2s ease;
-  }
+}
 
-  input:focus {
+input:focus {
     border: 1px solid gold; /* حدود ذهبية */
     box-shadow: 0 0 6px gold; /* جلو جميل */
-  }
+}
 
-
-  input::placeholder {
+input::placeholder {
     color: #7f7990;
-  }
+}
 
-  .socials {
+.socials {
     display: flex;
     gap: 8px;
-  }
+}
 
-  .social-btn {
+.social-btn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -173,29 +235,31 @@
     background: transparent;
     border: 1px solid rgba(243, 207, 0, 0.26);
     font-size: 15px;
-  }
+}
 
-  .social-btn > img {
+.social-btn > img {
     height: 24px;
-  }
+}
 
-  .social-btn:first-child > img {
+.social-btn:first-child > img {
     height: 20px;
-  }
+}
 
-  form > button[type="submit"] {
-    color: #ffffff;
-    background: rgba(72, 255, 0, 0.164);
+form > button[type="submit"] {
+    color: #000000;
+    background: rgb(72, 255, 0);
     font-size: 17px;
-  }
+    font-weight: bold;
 
-  .or {
+}
+
+.or {
     position: relative;
     text-align: center;
     height: 24px;
-  }
+}
 
-  .or::before {
+.or::before {
     content: "";
     position: absolute;
     z-index: 0;
@@ -204,11 +268,11 @@
     width: 100%;
     translate: 0 -50%;
     height: 1px;
-    background: var(--color-border);
+    background: white;
     opacity: 0.6;
-  }
+}
 
-  .or::after {
+.or::after {
     content: "Or";
     position: absolute;
     top: 50%;
@@ -219,50 +283,49 @@
     color: var(--color-muted);
     font-size: 12px;
     padding: 0 12px;
-  }
+}
 
-
-  /* responsive styles */
-  @media (width >= 485px) {
+/* responsive styles */
+@media (width >= 485px) {
     form {
-      padding-inline: 50px;
+        padding-inline: 50px;
     }
 
     .extra-text {
-      display: inline;
+        display: inline;
     }
-  }
+}
 
-  @media (width >= 500px) {
+@media (width >= 500px) {
     form {
-      transition: none;
+        transition: none;
     }
-  }
+}
 
-  @media (width >= 580px) {
+@media (width >= 580px) {
     .card {
-      flex-direction: row;
-      padding: 6px 0 6px 6px;
-      width: clamp(300px, 90vw, 740px);
+        flex-direction: row;
+        padding: 6px 0 6px 6px;
+        width: clamp(300px, 90vw, 740px);
     }
 
     form :is(h2, h3) {
-      text-align: left;
+        text-align: left;
     }
 
     .hero {
-      flex: 1 1 40%;
-      width: 50%;
+        flex: 1 1 40%;
+        width: 50%;
     }
 
     form {
-      padding: 60px 30px;
+        padding: 60px 30px;
     }
-  }
+}
 
-  @media (width >= 700px) {
+@media (width >= 700px) {
     .hero {
-      flex: 1 1 50%;
-      width: 50%;
+        flex: 1 1 50%;
+        width: 50%;
     }
-  }
+}
