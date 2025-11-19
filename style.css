@@ -159,7 +159,7 @@ h2 span {
 }
 
 .hero {
-    background: url("/Egyptian\ God\ Apep.jpg");
+    background: url("./Egyptian\ God\ Apep.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
