@@ -151,8 +151,11 @@ form {
 h2,
 h3,
 p {
-    font-weight: 500;
+    font-weight: bold;
     margin: 0;
+}
+h2 span {
+  color: gold;
 }
 
 .hero {
@@ -160,7 +163,7 @@ p {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    border-radius: 16px;
+    border-radius: 16px 0 0 16px;
     overflow: hidden;
     transition: 0.3s;
 }
