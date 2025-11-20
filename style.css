@@ -249,11 +249,15 @@ input {
     background: #3c364c57;
     padding: 0 2.5vw;
     transition: 0.2s ease;
+    color: gold !important; /* ← هنا السحر */
 }
+
 
 input:focus {
     border: 1px solid gold; /* حدود ذهبية */
     box-shadow: 0 0 6px gold; /* جلو جميل */
+        color: gold !important;
+
 }
 
 input::placeholder {
