@@ -1,5 +1,5 @@
 body {
-        cursor: url("images/cursor.png"), auto;
+cursor: url("/ankh-symbol\ \(1\).png") , auto;   /* يستخدم الحجم الفعلي */
 
     height: 100vh;
     margin: 0;
@@ -24,6 +24,8 @@ body {
 
 * {
     box-sizing: border-box;
+        cursor: url("/ankh-symbol (1).png"), auto !important;
+
 }
 
 /*creating sand animation */
