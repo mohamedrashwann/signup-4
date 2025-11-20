@@ -24,7 +24,7 @@ cursor: url("/ankh-symbol\ \(1\).png") , auto;   /* يستخدم الحجم ال
 
 * {
     box-sizing: border-box;
-        cursor: url("/ankh-symbol (1).png"), auto !important;
+        cursor: url("./assets/icons/ankh-symbol\ \(1\).png "), auto !important;
 
 }
 
@@ -165,7 +165,7 @@ h2 span {
 }
 
 .hero {
-    background: url("./Egyptian\ God\ Apep.jpg");
+    background: url("./assets/image/Egyptian\ God\ Apep.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
